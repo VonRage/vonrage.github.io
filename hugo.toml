@@ -1,5 +1,4 @@
-# hugo.toml (or config.toml)
-baseURL = "https://example.com/"
+baseURL = "https://vonrage.github.io/"
 languageCode = "en-us"
 title = "VonRage Games"
 theme = "vaporwave"
