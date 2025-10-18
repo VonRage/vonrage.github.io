@@ -1,0 +1,443 @@
+// Vaporwave Color Palette
+$neon-pink: #ff6ec7;
+$neon-blue: #00d9ff;
+$neon-purple: #b967ff;
+$neon-green: #05ffa1;
+$dark-bg: #0a0a1a;
+$card-bg: rgba(20, 20, 40, 0.8);
+$text-primary: #ffffff;
+$text-secondary: #b8b8d8;
+
+// Typography
+$font-heading: 'Orbitron', sans-serif;
+$font-body: 'Rajdhani', sans-serif;
+
+// Mixins
+@mixin glow($color) {
+  text-shadow: 0 0 10px $color, 0 0 20px $color, 0 0 30px $color;
+}
+
+@mixin neon-border($color) {
+  border: 2px solid $color;
+  box-shadow: 0 0 10px $color, inset 0 0 10px rgba($color, 0.2);
+}
+
+@mixin gradient-bg {
+  background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #16213e 100%);
+}
+
+// Reset & Base
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  @include gradient-bg;
+  color: $text-primary;
+  font-family: $font-body;
+  font-size: 18px;
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 110, 199, 0.03) 2px,
+        rgba(255, 110, 199, 0.03) 4px
+      );
+    pointer-events: none;
+    z-index: 1;
+    animation: scanlines 8s linear infinite;
+  }
+}
+
+@keyframes scanlines {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(10px); }
+}
+
+// Header
+.site-header {
+  position: relative;
+  padding: 2rem 0;
+  margin-bottom: 3rem;
+  
+  .header-glow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, $neon-pink, $neon-blue, $neon-purple, $neon-blue, $neon-pink);
+    background-size: 200% 100%;
+    animation: gradient-shift 3s ease infinite;
+    box-shadow: 0 0 20px rgba(255, 110, 199, 0.5);
+  }
+  
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .logo a {
+    font-family: $font-heading;
+    font-size: 2rem;
+    font-weight: 900;
+    text-decoration: none;
+    color: $text-primary;
+    @include glow($neon-pink);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      @include glow($neon-blue);
+      transform: scale(1.05);
+    }
+  }
+  
+  .main-nav {
+    display: flex;
+    gap: 2rem;
+    
+    .nav-link {
+      font-family: $font-heading;
+      font-size: 1rem;
+      text-decoration: none;
+      color: $text-secondary;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 0.5rem 1rem;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: $neon-blue;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+        box-shadow: 0 0 10px $neon-blue;
+      }
+      
+      &:hover, &.active {
+        color: $neon-blue;
+        @include glow($neon-blue);
+        
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+// Container
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 3.5rem;
+  @include glow($neon-pink);
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: $neon-blue;
+  @include glow($neon-blue);
+}
+
+h3 {
+  font-size: 1.8rem;
+  color: $neon-purple;
+}
+
+a {
+  color: $neon-blue;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    color: $neon-pink;
+    @include glow($neon-pink);
+  }
+}
+
+// Home Page
+.home-hero {
+  text-align: center;
+  padding: 4rem 0;
+  
+  .hero-title {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.5rem;
+    color: $text-secondary;
+    margin-bottom: 3rem;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+// Cards (for games/blog posts)
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.card {
+  background: $card-bg;
+  @include neon-border($neon-purple);
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(185, 103, 255, 0.3);
+    @include neon-border($neon-pink);
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    
+    a {
+      text-decoration: none;
+      color: $text-primary;
+      
+      &:hover {
+        color: $neon-pink;
+      }
+    }
+  }
+  
+  .card-meta {
+    color: $text-secondary;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba($neon-blue, 0.3);
+  }
+  
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .tag {
+    background: rgba($neon-purple, 0.2);
+    border: 1px solid $neon-purple;
+    color: $neon-purple;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: rgba($neon-pink, 0.2);
+      border-color: $neon-pink;
+      color: $neon-pink;
+      @include glow($neon-pink);
+    }
+  }
+}
+
+// Single Page Content
+.content-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid rgba($neon-purple, 0.3);
+  
+  .content-title {
+    margin-bottom: 1rem;
+  }
+  
+  .content-meta {
+    color: $text-secondary;
+    font-size: 1rem;
+  }
+}
+
+.content-body {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  
+  p {
+    margin-bottom: 1.5rem;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 2rem 0;
+    @include neon-border($neon-blue);
+  }
+  
+  code {
+    background: rgba($neon-purple, 0.1);
+    color: $neon-green;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+  }
+  
+  pre {
+    background: rgba(10, 10, 30, 0.8);
+    padding: 1.5rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    @include neon-border($neon-green);
+    margin: 2rem 0;
+    
+    code {
+      background: none;
+      padding: 0;
+    }
+  }
+}
+
+// Footer
+.site-footer {
+  margin-top: 5rem;
+  padding: 3rem 0;
+  text-align: center;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, $neon-purple, transparent);
+    box-shadow: 0 0 20px rgba(185, 103, 255, 0.5);
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  p {
+    color: $text-secondary;
+    margin-bottom: 1rem;
+  }
+  
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    
+    a {
+      color: $neon-purple;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        color: $neon-pink;
+        transform: scale(1.2);
+        @include glow($neon-pink);
+      }
+    }
+  }
+}
+
+// List pages
+.page-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .site-header {
+    .header-container {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .main-nav {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  .home-hero .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
