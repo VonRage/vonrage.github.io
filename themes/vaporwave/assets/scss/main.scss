@@ -1,4 +1,5 @@
 // Vaporwave Color Palette
+// Vaporwave Color Palette
 $neon-pink: #ff6ec7;
 $neon-blue: #00d9ff;
 $neon-purple: #b967ff;
@@ -396,14 +397,55 @@ a {
     margin-top: 1.5rem;
     
     a {
-      color: $neon-purple;
-      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba($card-bg, 0.6);
+      border: 2px solid;
       transition: all 0.3s ease;
       
+      svg {
+        width: 24px;
+        height: 24px;
+        transition: all 0.3s ease;
+      }
+      
+      // Default vaporwave styling
+      border-color: $neon-purple;
+      color: $neon-purple;
+      
       &:hover {
-        color: $neon-pink;
-        transform: scale(1.2);
-        @include glow($neon-pink);
+        transform: scale(1.15) translateY(-3px);
+        box-shadow: 0 10px 30px rgba(185, 103, 255, 0.4);
+      }
+      
+      // Itch.io - red with pink vaporwave
+      &.social-itch {
+        border-color: rgba(250, 92, 92, 0.8);
+        color: #fa5c5c;
+        
+        &:hover {
+          border-color: $neon-pink;
+          color: $neon-pink;
+          box-shadow: 0 10px 30px rgba(255, 110, 199, 0.4);
+          @include glow($neon-pink);
+        }
+      }
+      
+      // Bluesky - blue
+      &.social-bluesky {
+        border-color: rgba(18, 160, 255, 0.8);
+        color: #12a0ff;
+        
+        &:hover {
+          border-color: $neon-blue;
+          color: $neon-blue;
+          box-shadow: 0 10px 30px rgba(0, 217, 255, 0.4);
+          @include glow($neon-blue);
+        }
       }
     }
   }

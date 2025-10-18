@@ -4,8 +4,8 @@ title = "VonRage Games"
 theme = "vaporwave"
 
 [params]
-  description = "Games, projects, and cool stuff"
-  author = "Your Name"
+  description = "Games, projects, anything really. Take a look."
+  author = "Tyler Roth"
   
 [menu]
   [[menu.main]]

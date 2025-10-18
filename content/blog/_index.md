@@ -2,4 +2,4 @@
 title: "Blog"
 ---
 
-Thoughts, updates, and cool discoveries.
+Eventually there will be stuff here. Come back soon!
