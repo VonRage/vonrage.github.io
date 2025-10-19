@@ -2,6 +2,7 @@
 title: "What I was able to accomplish in a week"
 date: 2025-10-18T15:50:26-04:00
 draft: false
+image: "/images/firin_ma_lazer.gif"
 tags: [devlog, weeklyDevlog, godot]
 ---
 ## Not much in all honesty

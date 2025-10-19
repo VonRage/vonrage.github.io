@@ -1,0 +1,13 @@
+{{ $color := .Get "color" | default "#b967ff" }}
+{{ $glowColor := .Get "color" | default "185, 103, 255" }}
+
+<div style="text-align: center; margin: 2rem 0;">
+  <iframe 
+    frameborder="0" 
+    src="{{ .Get "src" }}" 
+    width="{{ .Get "width" | default "960" }}" 
+    height="{{ .Get "height" | default "540" }}"
+    style="border: 2px solid {{ $color }}; border-radius: 10px; box-shadow: 0 0 20px rgba({{ $glowColor }}, 0.5), 0 0 80px rgba({{ $glowColor }}, 0.3); display: block; margin: 0 auto; max-width: 100%;">
+    <a href="{{ .Get "fallback" }}">Error Loading game. Play on itch.io</a>
+  </iframe>
+</div>
