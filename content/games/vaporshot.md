@@ -1,7 +1,7 @@
 ---
 title: "V a p o r s h o t"
 date: 2025-10-18T10:17:34-04:00
-draft: true
+draft: false
 description: "Fly through a vaporwave (I use that term loosely, I'm not a great artist, I tried lol) level, dodging bullets and racking up points. Take down the boss and congratulations, you've got one more accomplishment under your belt to tell your grandkids about."
 image: "/images/vaporshot.png"
 tags: [shmup, 2d, godot]
